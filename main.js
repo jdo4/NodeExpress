@@ -17,13 +17,13 @@ app.use(
   })
 );
 
-app.listen(3004, () => {
-  console.log("Server is running on http://localhost:3004");
+app.listen(3002, () => {
+  console.log("Server is running on http://localhost:3002");
 });
 
 mongoose
   .connect(
-    "mongodb+srv://jainanant1108:jainanant1108@cluster0.7v0pbfc.mongodb.net/web",
+    "mongodb+srv://darshanjasoliya04:D%40rshan903@cluster0.pzxphfg.mongodb.net/assignment",
     { useNewUrlParser: true }
   )
   .then(() => {
@@ -48,6 +48,7 @@ app.post("/user", async (req, res) => {
   try {
     User.create(req.body);
     res.send("User Created successfully");
+    console.log(req.body);
   } catch (error) {
     console.error("Failed to create user:", error);
     res.status(500).send("Failed to create user:");
@@ -56,7 +57,7 @@ app.post("/user", async (req, res) => {
 app.put("/user/:id", async (req, res) => {
   try {
     console.log(req.body);
-    const query = { _id: mongoose.Types.ObjectId(req.params.id) };
+    const query = { _id: new mongoose.Types.ObjectId(req.params.id) };
     const schemaDefinition = {
       $set: {
         email: req.body.email,
@@ -292,3 +293,5 @@ app.delete("/comments/:id", async (req, res) => {
     res.status(500).send("Failed to Deleted Comments:");
   }
 });
+
+
