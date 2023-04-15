@@ -57,7 +57,7 @@ app.post("/user", async (req, res) => {
 app.put("/user/:id", async (req, res) => {
   try {
     console.log(req.body);
-    const query = { _id: new mongoose.Types.ObjectId(req.params.id) };
+    const query = { _id: new  mongoose.Types.ObjectId(req.params.id) };
     const schemaDefinition = {
       $set: {
         email: req.body.email,
